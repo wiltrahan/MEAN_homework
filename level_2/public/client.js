@@ -1,11 +1,12 @@
 $(function() {
-  $.get('/cities', appendToList);
+  $.get('/cities', appendToForm);
 
-  function appendToList(cities) {
-    var list = [];
+  function appendToForm(cities) {
+    var cityList = [];
     for(var i in cities) {
-      list.push($("<li>", { text: cities[i] }));
+      cityList.push($("<option>", { text: cities[i] }));
     }
-    $(".city-list").append(list);
+    $(".city-form").append(cityList);
   }
 });
+
