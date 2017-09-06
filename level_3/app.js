@@ -3,6 +3,7 @@ var app = express();
 
 app.use(express.static("public"));
 
+
 var cities = {
     "Providence": "Rhode Island",
     "Boston": "Massachusetts",
@@ -27,10 +28,22 @@ app.get("/cities", function(req, res) {
   }
 });
 
+app.param('city', function(req, res, next) {
+  var city = req.params.city;
+  var cityReq = city[0].toUpperCase() + city.slice(1).toLowerCase();
+  req.cityName = cityReq;
+  next();
+});
+
 app.get("/cities/:city", function(req, res) {
 
-  var state = cities[req.params.city];
-  res.json(state);
+  var state = cities[req.cityName];
+  if(state) {
+    res.json(state);
+  } else {
+    res.status(404).json("City Not Found");
+  }
+
 
 
 });
