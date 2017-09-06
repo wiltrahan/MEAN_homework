@@ -4,7 +4,7 @@ $(function() {
   function appendToForm(cities) {
     var cityList = [];
     for(var i in cities) {
-      cityList.push($("<option>", { text: cities[i] }));
+      cityList.push($("<option>", { text: i }));
     }
     $(".city-form").append(cityList);
   }
