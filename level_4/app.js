@@ -31,6 +31,11 @@ app.post('/cities', parseUrlencoded, function(req, res) {
   res.status(201).json(newCity.city);
 });
 
+app.delete('/cities/:city', function(req, res) {
+  delete cities[req.cityName];
+  res.sendStatus(200);
+})
+
 app.get("/cities", function(req, res) {
   if(req.query.limit >= 0) {
     res.json(cites.slice(0, req.query.limit))
