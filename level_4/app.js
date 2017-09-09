@@ -8,13 +8,11 @@ app.use(express.static("public"));
 
 
 var cities = {
-  "Providence": "Rhode Island",
-  "Boston": "Massachusetts",
-  "New York": "New York",
-  "Miami": "Florida",
-  "Los Angeles": "California",
-  "Denver": "Colorado",
-  "Dallas": "Texas"
+  "Providence": "RI",
+  "Boston": "MA",
+  "Miami": "FL",
+  "Denver": "CO",
+  "Dallas": "TX"
 };
 
 app.param('city', function(req, res, next) {
